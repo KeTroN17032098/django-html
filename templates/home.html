@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{%block content %}
+    <div class="index-container">
+        <div class="index-header">
+            <h2>도서관 메니지먼트 툴입니다.</h2>
+            <ul>
+                <li>
+                    <button id='blacklist' type="button" class="btn btn-outline-primary btn-lg" onclick="location.href = '/blacklist'"  >블랙 리스트</button>
+                </li>
+                <li>
+                    <button id='count' type="button" class="btn btn-outline-primary btn-lg"  onclick="location.href = '/count'">이용자 내역</button>
+                </li>
+                <li>
+                    <button id='help'type="button" class="btn btn-outline-primary btn-lg" onclick="location.href = '/help'">도움말</button>
+                </li>
+            </ul>
+            <p>made by <a href="mailto:ketron12@kakao.com">SMK</a></p>
+        </div>
+    </div>
+{%endblock%}
