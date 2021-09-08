@@ -6,4 +6,13 @@ def board(request):
     
     Persons=PersonModel.objects.all()
 
-    return render(request,'board.html',{'persons':Persons,'keys':Persons[0].key()})
+    try:
+        j=Persons[0].key()
+    except:
+        j=[]
+    return render(request,'board.html',{'persons':Persons,'keys':j})
+
+def search(request,text):
+    if request.method =='post':
+        tmp=PersonModel.objects.all().filter(name=text)
+        tmp2=PersonModel.objects.all().filter(kolasid=text)

@@ -41,3 +41,16 @@ ul li {
 td {
     color: white;
 }
+
+.board-container{
+    background-color: rgba(221, 240, 231, 0.959);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.1);
+    overflow: hidden;
+    min-width: 70vw;
+    max-width: 95%;
+    align-items: center;
+    text-align: center;
+    min-height: 70vh;
+    max-height: 95%;
+}
