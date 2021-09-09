@@ -3,16 +3,9 @@
 {% load static %} 
 <script type="text/javascript" src={%static 'js/Board_Base.js' %}></script>
 <div class="board-container">
-    <h2>블랙리스트</h2>
-    <p>요주의가 필요한 분들에 대한 리스트:</p>
+    <h2>검색결과</h2>
+    <p>{{search_keyword}}</p>
     <table class="table table-hover table-bordered table-striped paginated" id="board">
-        <form action="/blacklist/search/" method="post">
-			<p>
-            검색 (이름/ID): 
-				<input id='person_info' type="text" name="person_info" value="">
-                <input type="submit" value="OK">
-			</p>
-		</form>
         <thead>
             <tr class='bg-primary'>
                 <th>No.</th>
@@ -22,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            {%for person in persons%}
+            {%for person in object_list%}
             <tr id={{person.pk}}>
                 <td class='bg-success'>{{person.pk}}</td>
                 <td class='bg-success'>{{person.name}}</td>
@@ -41,6 +34,7 @@
         <div class="pagination" id="pagination">페이지 영역</div>
 
     </div>
+    <div class="bottom-button"><button type="button" class="btnbtn-outline-primary btn-lg" onclick="location.href = '/blacklist'" >목록으로</button></div>
 </div>
 <script>
     $('tr').dblclick(function(){

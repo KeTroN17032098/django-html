@@ -54,3 +54,7 @@ td {
     min-height: 70vh;
     max-height: 95%;
 }
+
+.bottom-button{
+    background-position: bottom bottom;
+}
