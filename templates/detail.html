@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+{%block content %}
+{% load static %} 
+<div class="board-container">
+    <h1 text-align="left!important" >상세정보</h1>
+    <div class="info-container">
+        <div class='infotext-container1'>
+            <h2>이름 : {{person.name}}</h2>
+            <h2>ID : {{person.kolasid}}</h2>
+            <h2>적발횟수 : {{person.count}}번</h2>
+        </div>
+        
+        {% if filetype == 'jpg' or filetype == 'png'%} <div class='img-container'><img src='{{person.file.url}}' alt ='img' >{% endif %}
+
+        <div class='infotext-container2'>
+            <h2>적발장소 : {%for k,v in person.places.items%}{%if v%}{{k}}&nbsp;&nbsp;{%endif%}{%endfor%}</h2>
+            <h2>비고 : {{person.detail}}</h2>
+            <h2>파일 : {{person.file.name}}</h2>
+        </div>
+    </div>
+    
+    
+</div>
+{%endblock%}

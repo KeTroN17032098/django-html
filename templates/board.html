@@ -5,17 +5,9 @@
 <div class="board-container">
     <h2>블랙리스트</h2>
     <p>요주의가 필요한 분들에 대한 리스트:</p>
-    <table class="table table-hover table-bordered table-striped paginated" id="board">
-        <form action="/blacklist/search/" method="post">
-			<p>
-            검색 (이름/ID): 
-				<input id='person_info' type="text" name="person_info" value="">
-                <input type="submit" value="OK">
-			</p>
-		</form>
+    <table id="dtBasicExample" class="table table-hover table-bordered table-striped paginated" id="board">
         <thead>
             <tr class='bg-primary'>
-                <th>No.</th>
                 {%for k in keys %}
                 <th>{{k}}</th>
                 {%endfor%}
@@ -23,8 +15,8 @@
         </thead>
         <tbody>
             {%for person in persons%}
-            <tr id={{person.pk}}>
-                <td class='bg-success'>{{person.pk}}</td>
+            <tr id={{person.no}}>
+                <td class='bg-success'>{{person.no}}</td>
                 <td class='bg-success'>{{person.name}}</td>
                 <td class='bg-success'>{{person.kolasid}}</td>
                 <td class='bg-success'>{{person.count}}</td>
@@ -32,20 +24,16 @@
                 {%if v%}{{k}}/{%endif%}
                 {%endfor%}</td>
                 <td class='bg-success'>{{person.detail}}</td>
+                {%if person.file%}<td class='bg-success' onclick="window.open('{{person.file.url}}',',')">보기</td>{%endif%}
             </tr>
             {%endfor%}
         </tbody>
     </table>
-    <div class="btnContent">
-
-        <div class="pagination" id="pagination">페이지 영역</div>
-
-    </div>
 </div>
 <script>
     $('tr').dblclick(function(){
         var id = $(this).attr('id');
-        window.open('detail/'+id);
+        if(id!=undefined)window.open('detail/'+id);
     })
 </script>
 {%endblock%}

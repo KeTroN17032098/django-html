@@ -54,3 +54,20 @@ td {
     min-height: 70vh;
     max-height: 95%;
 }
+
+.bottom-button{
+    background-position: bottom bottom;
+}
+
+.pagination#pagination{
+    align-items: center center;
+    text-align: center center;
+}
+
+.img-container{
+    align-items:right right;
+    text-align: right!important;
+    max-height: 50%;
+    max-width: 40vw;
+    flex: none;
+}

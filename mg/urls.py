@@ -24,4 +24,5 @@ urlpatterns = [
     path('blacklist/',include('blacklist.urls'),name='blacklist'),
     path('count/',include('count.urls'),name='count'),
     path('help/',include('help.urls'),name='help'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

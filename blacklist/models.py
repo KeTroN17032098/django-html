@@ -21,13 +21,15 @@ def jsonfield_default():
 
 
 class PersonModel(models.Model):
+    no=models.AutoField(primary_key=True)
     name=models.CharField(max_length=50)
     kolasid=models.CharField(max_length=70)
-    count=models.IntegerField()
+    count=models.IntegerField(default=1)
     places=models.JSONField(default=jsonfield_default)
     detail=models.TextField()
+    file=models.FileField(null=True,blank=True)
     
     def __str__(self):
         return self.name if self.name is not None else self.kolasid
     def key(self):
-        return ['name', 'kolasid', 'count', 'places','detail']
+        return ['no','name', 'kolasid', 'count', 'places','detail','file']

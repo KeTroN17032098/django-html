@@ -5,6 +5,6 @@ app_name='blacklist'
 
 urlpatterns = [
 	path('', views.board, name='list-watch'),
-	path('search/',views.search,name='list-search'),
-	path('detail/<int:pk>/',views.detail,name='list-detail'),
+	path('detail/<int:no>/',views.detail,name='list-detail'),
+	path('detail/<int:no>/upload',views.upload,name='list-detail-upload')
 ]

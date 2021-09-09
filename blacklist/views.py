@@ -16,23 +16,15 @@ def board(request):
         j=[]
     return render(request,'board.html',{'persons':Persons,'keys':j})
 
-def search(request):
-    if request.method =='POST':
-        Form=SearchForm(request.POST)
-        context={}
-        
-        if Form.is_valid():
-            print(Form.cleaned_data)
-            tmp=PersonModel.objects.filter(Q(name__icontains=Form.cleaned_data['person_info'])|Q(kolasid__icontains=Form.cleaned_data['person_info'])).distinct()
+def detail(request,no):
+    Target=PersonModel.objects.filter(no=no)[0]
+    filetype=Target.file.name.split('.')[-1]
+    
+    return render(request,'detail.html',{'person':Target,'filetype':filetype})
 
-            context['object_list']=tmp
-            context['search_keyword']=Form.cleaned_data['person_info']
-            context['keys']=PersonModel.objects.all()[0].key()
-        
-            
-        return render(request, 'search.html',context)
-    else:
-        return HttpResponseRedirect(reverse('blacklist:list-watch'))
-
-def detail(request,pk):
-    return render(request, 'help.html',{})
+def upload(request,no):
+    if request.method == 'POST':
+        form=UploadFileForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+    return HttpResponseRedirect('/blacklist/detail/'+no)

@@ -58,3 +58,12 @@ td {
 .bottom-button{
     background-position: bottom bottom;
 }
+
+.pagination#pagination{
+    align-items: center center;
+    text-align: center center;
+}
+
+img{
+    height: 20vh;
+}
