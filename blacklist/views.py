@@ -33,3 +33,6 @@ def search(request):
         return render(request, 'search.html',context)
     else:
         return HttpResponseRedirect(reverse('blacklist:list-watch'))
+
+def detail(request,pk):
+    return render(request, 'help.html',{})
