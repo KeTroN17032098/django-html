@@ -17,10 +17,14 @@ def board(request):
     return render(request,'board.html',{'persons':Persons,'keys':j})
 
 def detail(request,no):
-    Target=PersonModel.objects.filter(no=no)[0]
-    filetype=Target.file.name.split('.')[-1]
-    
-    return render(request,'detail.html',{'person':Target,'filetype':filetype})
+    try:
+        Target=PersonModel.objects.filter(no=no)[0]
+        filetype=Target.file.name.split('.')[-1]
+        
+        return render(request,'detail.html',{'person':Target,'filetype':filetype,'form':EditFileForm()})
+    except Exception as e:
+        print(e)
+        return HttpResponseRedirect('/blacklist/')
 
 def upload(request,no):
     if request.method == 'POST':
