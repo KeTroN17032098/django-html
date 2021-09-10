@@ -12,18 +12,25 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 10vh 40vh;
     justify-content: center;
+    align-items: center;
 }
 
+nav{
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+}
 .index-container {
     background-color: rgba(221, 240, 231, 0.959);
     border-radius: 10px;
     box-shadow: 0 0 10px 5px rgba(100, 100, 100, 0.1);
     overflow: hidden;
     width: 600px;
-    max-width: 100%;
+    min-width: 100%;
     align-items: center;
     text-align: center;
 }
@@ -64,6 +71,10 @@ td {
     text-align: center center;
 }
 
-img{
-    height: 20vh;
+.img-container{
+    align-items:right right;
+    text-align: right!important;
+    max-height: 50%;
+    max-width: 40vw;
+    flex: none;
 }
