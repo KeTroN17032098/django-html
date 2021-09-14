@@ -5,20 +5,31 @@
 <table id="table_id" class="tb tb-responsive tb-lg">
     <thead>
         <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
+            {%for key in keys%}<th>{{key}}</th>{%endfor%}
         </tr>
     </thead>
     <tbody>
+        {%for person in people%}
         <tr>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
+            <td>{{person.no}}</td>
+            <td>{{person.name}}</td>
+            <td>{{person.kolasid}}</td>
+            <td>{{person.count}}</td>
+            
+            <td>{%for place in places%}{%if person.places.place%}{{person.places.place}}{%endif%}{%endfor%}</td>
+            
+            <td>{{person.detail}}</td>
+            <td>{{person.first}}</td>
+            <td>{{person.recent}}</td>
+            <td>{{person.image}}</td>
+            <td>{{person.file.name}}</td>
         </tr>
-        <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-        </tr>
+        {%endfor%}
     </tbody>
 </table>
-
+<aside>
+    <section>
+    <button class="btn btn-lg btn-primary"onclick="location.href='{%url "blacklist:add"%}'" type="button">추가</button>
+    </section>
+</aside>
 {%endblock %}
