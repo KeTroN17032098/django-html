@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'index',
+    'blacklist',
+    'help',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +133,7 @@ MEDIA_ROOT=os.path.join(BASE_DIR, 'media_root')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+X_FRAME_OPTIONS = 'ALLOWALL' 
+XS_SHARING_ALLOWED_METHODS = ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE']
