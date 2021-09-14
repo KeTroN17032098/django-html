@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'SBAggroB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    background-image: url('../image/snow.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    font-family: 'SBAggroB';
+}
+
+section{
+    position:fixed;
+    
+    margin: 10% 10% 10% 10%;
+    height:100%;
+    width:100%;
+
+    display: flex;
+    grid-template-columns: 100vw;
+    grid-template-rows: 10vh 40vh;
+    justify-content: center;
+    align-items: center;
+    background-color: azure;
+}
+
+footer {
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 100%;
+
+    justify-items: center;
+
+	text-align: center !important;
+
+	color: white;
+
+	background: gray;
+
+}
