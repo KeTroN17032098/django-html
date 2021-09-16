@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from count import urls
+from rest_framework import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('index.urls'),name='index'),
-    path('blacklist/',include('blacklist.urls'),name='blacklist'),
-    path('help/',include('help.urls'),name='help')
+    path('user/', include('account.urls')),
+    path('count/', include('count.urls')),
+
 ]
