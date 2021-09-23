@@ -1,22 +1,18 @@
 from rest_framework import serializers
 from snippets.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
+from django.contrib.auth.models import User
 
-class SnippetSerializer(serializers.Serializer):
-    id=serializers.IntegerField(read_only=True)
-    title=serializers.CharField(required=False,allow_blank=True,max_length=100)
-    code=serializers.CharField(style={'base_template':'textarea.html'})
-    lineos=serializers.BooleanField(required=False)
-    language=serializers.ChoiceField(choices=LANGUAGE_CHOICES,default='python')
-    style=serializers.ChoiceField(choices=STYLE_CHOICES,default='friendly')
+
+class SnippetSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+    highlighted = serializers.HyperlinkedIdentityField(view_name='snippet-highlighted',format='html')
+    class Meta:
+        model=Snippet
+        fields=('url','id','highlighted','owner','title','code','lineos','language','styles')
+        
+class UserSerializer(serializers.ModelSerializer):
+    snippets=serializers.HyperlinkedRelatedField(many=True,view_name='snippet-detail',read_only=True)
     
-    def Create(self, validated_data):
-        """
-        Create a new Snippet instance, given the validation data.
-        """
-        return Snippet.objects.create(**validated_data)
-    
-    def update(self,instance, validated_data):
-        """
-        Update and return an existing Snippet instance, given the validation data.
-        """
-        instance.title = validated_data.get('title',instance.title)
+    class Meta:
+        model=User
+        fields=('url','id','username','snippets')
